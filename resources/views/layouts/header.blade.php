@@ -16,8 +16,8 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin.css')}} " rel="stylesheet">
-  
-  
+
+
   <style>
   .card-columns .card {
     display: block;
@@ -61,7 +61,7 @@
           </a>
         </li>
 	    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/products">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Product Catalogue</span>
           </a>
@@ -95,15 +95,15 @@
       </ul>
     </div>
   </nav>
-  
-  
+
+
   @yield('content')
-  
-  
-    
-    
-    
-    
+
+
+
+
+
+
  <!-- Footer-->
 <footer class="sticky-footer">
       <div class="container">
@@ -117,8 +117,8 @@
       <i class="fa fa-angle-up"></i>
     </a>
 
-	
-	
+
+
 	    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

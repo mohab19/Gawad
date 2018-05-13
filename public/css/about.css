@@ -1,0 +1,28 @@
+.hero{
+    background-image:url('../aboutimg/Rectangle%2017.png');
+    height: 400px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.bg_sty{
+    background-color: gainsboro;
+    height: 400px;
+}
+
+.bero img{
+    display: block;
+    margin: auto;
+}
+
+P{
+    font-size: 12PX;
+}
+
+H2{
+color: blue;
+}
+h4{
+    color: blue;
+    font-size: 30px;
+}

@@ -1,0 +1,63 @@
+body{
+  
+  padding-left: 18px;
+}
+
+
+.pero{
+    margin-top: 20px;
+}
+
+
+h1{
+   color:#153487;  
+}
+
+ul li{
+    color:black;
+    list-style-type: none;
+    
+}
+
+h2{
+   font-size:13px; 
+}
+
+
+
+p{
+    text-align: center;
+    color: black;
+  
+}
+h3{
+    text-align: center;
+}
+
+
+h3,h4{
+    color: blue;
+    
+}
+h5{
+    font-size: 15px;
+    border-bottom: 1px solid grey;
+    width: 50%;
+}
+
+.hero {
+   padding-right:10px;
+}
+
+.btn-primary{
+    background-color: #213e8b;
+}
+
+footer{
+    background-color:#595757;
+    padding: 100px;
+    
+}
+ 
+
+

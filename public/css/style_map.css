@@ -1,0 +1,124 @@
+
+body {
+		font-family: 'Montserrat', sans-serif;
+	}
+.product-header img {
+	max-width: 132px;
+    margin-left: -10px;
+}
+.product-header span {
+	background-color: #e4e3e3;
+    border: 1px solid #c1baba;
+    border-radius: 3px;
+    padding-right: 18px;
+    padding-left: 18px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.product-header p {
+font-weight:bold;
+}
+.contaier {
+width: 1091px;
+}
+.product-header-row {
+	margin-top: 83px;
+    background-color: #e4e3e3;
+    border: 1px solid #e4e3e3;
+    border-radius: 6px;
+    margin-left: -34px;
+    margin-bottom: 27px;
+    padding-top: 11px;
+    padding-bottom: 2px;
+}
+
+.product-header-first {
+	padding-left: 42px;
+}
+
+
+
+/** Contact page **/ 
+
+.contact {
+	    margin-top: 28px;
+	    overflow-x: hidden;
+}
+.contact-second p {
+font-size: 14px;
+}
+.contact-second span {
+	color: #e4e3e3;
+	max-width: 20px;
+	display: inline-block;
+}
+.head {
+	display: inline-flex;
+}
+.head img {
+	height: 17px;
+    margin-left: 38px;
+}
+.second-row {
+	margin-left: -231px;
+}
+.contact-image {
+	max-width: 56px;
+}
+.contact-image-row {
+	margin-bottom: 4px;
+}
+.first-touch {
+	color:#3450a5;
+}
+.touch {
+	margin-left: 15px;
+}
+.contact-form {
+	margin-top:20px;
+}
+.contact-form {
+	    font-size: 13px;
+}
+.contact-form input {
+    min-width: 174px;
+    border: 1px solid #7272b1;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+.contact-form textarea {
+    min-width: 310px;
+    border-color: #7272b1;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+::placeholder {
+	color : #7272b1;;
+}
+.contact-header {
+	background-color: #bbb6b6;
+    padding: 9px;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 30;
+}
+.contact-left {
+ 	background-color:#7b8dad;
+ 	height: 45px;
+ 	margin-right: 10px;
+    width: 265px;
+}
+.contact-right {
+ 	background-color:#bdcfef;
+ 	height: 45px;
+ 	margin-left: 10px;
+    width: 275px;
+
+}

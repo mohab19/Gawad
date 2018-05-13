@@ -1,0 +1,47 @@
+h1{
+    border: 2px solid #f1f1f1;
+    border-radius:10px 10px;
+    text-align: center;
+    color:#23408f;
+    
+}
+
+h2{
+   border: 2px solid #f1f1f1;
+   width: 98%;
+    text-align:left;
+     color: #23408f;
+   
+}
+
+h3{
+    font-size: 18px;
+    color:  #213e8b;
+    
+}
+
+h5{
+    border-bottom: 1px solid grey;
+    width: 30%;
+}
+.btn-primary{
+    background-color: #213e8b;
+}
+ul {
+   
+    
+}
+
+li{
+    color:  #213e8b;
+    font-size:18px; 
+
+}
+
+.heroa{
+    border-right: 2px solid #8491b4;
+   /*  border: 2px solid blue;*/
+    border-radius:20px 0px;
+     
+   
+}

@@ -15,11 +15,10 @@ Route::get('/', function () {
     return view('main');
 });
 
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
-Route::get('/products', 'HomeController@products')->name('products');
+Route::get('/Categories', 'HomeController@Categories')->name('Categories');
+Route::post('/Categories', 'CategoryController@store');
+Route::get('/subCtegory/{cat_id}', 'subCategoryController@create');

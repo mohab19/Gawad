@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,11 @@ class HomeController extends Controller
         return view('about');
     }
 
-    public function products() {
-         return view('products');
+    public function Categories(Request $request) {
+      $categories = Category::all();
+      if($request->ajax()){
+         return response()->json($categories, 200);
+      }
+      return view('/Categories');
     }
 }

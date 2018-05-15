@@ -9,45 +9,74 @@
         <li class="breadcrumb-item">
           <a href="/home">Home</a>
         </li>
-        <li class="breadcrumb-item active">Tables</li>
+        <li class="breadcrumb-item active">Categories</li>
       </ol>
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Categories
+          <!-- Add Category button -->
+            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-plus"></i>
+              Add Category
+            </button>
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Add Category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <form action="/Categories" method="post">
+                    @csrf
+                    <div class="modal-body">
+                      @include('includes.error')
+                      <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" id="cateName" placeholder="Category Name" name="name">
+                      </div>
+                      <div class="form-group">
+                        <label>Caption:</label>
+                        <input type="text" class="form-control" id="cateCap" placeholder="Category Caption" name="caption">
+                      </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" id="add-category">Submit</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div><!--end model-->
+          <!-- Add Category button -->
+          </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Caption</th>
+                  <th>Created at</th>
+                  <th>Last Update</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
                   <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Caption</th>
+                  <th>Created at</th>
+                  <th>Last Update</th>
+                  <th>Action</th>
                 </tr>
               </tfoot>
-              <tbody>
-                <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                </tr>
-
+              <tbody id="tbody">
               </tbody>
             </table>
           </div>
@@ -68,6 +97,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

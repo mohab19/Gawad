@@ -60,12 +60,12 @@
             <span class="nav-link-text">About</span>
           </a>
         </li>
-	    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="/products">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Product Catalogue</span>
-          </a>
-        </li>
+  	    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="/Categories">
+              <i class="fa fa-fw fa-dashboard"></i>
+              <span class="nav-link-text">Categories</span>
+            </a>
+          </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -121,9 +121,11 @@
 
 	    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/ajax.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
     <!-- Page level plugin JavaScript-->
     <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/datatables/jquery.dataTables.js"></script>
@@ -133,6 +135,7 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
+
 </body>
 
 </html>

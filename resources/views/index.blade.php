@@ -18,6 +18,7 @@
           <!-- Card Columns Example Social Feed-->
           <div class="mb-0 mt-4">
             <i class="fa fa-newspaper-o"></i> Slider</div>
+            <input type="button" name="btn" value="+" class="btn btn-success pull-right">
           <hr class="mt-2">
           <div class="card-columns">
             <!-- Example Social Card-->

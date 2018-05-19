@@ -11,17 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', 'PagesController@home' );
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
-Route::get('/Categories', 'CategoryController@show')->name('Categories');
-Route::post('/Categories', 'CategoryController@store');
-Route::get('/Category/{cat_id}', 'CategoryController@create');
-Route::delete('/Category/{cat_id}', 'CategoryController@destroy');
 
-Route::get('/test');
+//home panel routes
+Route::resource('/home' , 'SlideController');

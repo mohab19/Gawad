@@ -23,3 +23,5 @@ Route::get('/Categories', 'CategoryController@show')->name('Categories');
 Route::post('/Categories', 'CategoryController@store');
 Route::get('/Category/{cat_id}', 'CategoryController@create');
 Route::delete('/Category/{cat_id}', 'CategoryController@destroy');
+
+Route::get('/test');

@@ -29,12 +29,5 @@ class HomeController extends Controller
     public function about() {
         return view('about');
     }
-
-    public function Categories(Request $request) {
-      $categories = Category::all();
-      if($request->ajax()){
-         return response()->json($categories, 200);
-      }
-      return view('/Categories');
-    }
+    
 }

@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>GAWAD Panel</title>
   <!-- Bootstrap core CSS-->
   <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
   <!-- Page level plugin CSS-->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="{{asset('vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin.css')}} " rel="stylesheet">
 
@@ -75,37 +76,31 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </li>
       </ul>
     </div>
   </nav>
 
-
   @yield('content')
 
-
-
-
-
-
- <!-- Footer-->
-<footer class="sticky-footer">
+     <!-- Footer-->
+    <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
           <small>Copyright © Your Website 2018</small>
@@ -117,25 +112,18 @@
       <i class="fa fa-angle-up"></i>
     </a>
 
-
-
-	    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/ajax.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/ajax.js')}}"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="{{asset('vendor/datatables/dataTables.bootstrap4.js')}}"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+    <script src="{{asset('js/sb-admin.min.js')}}"></script>
     <!-- Custom scripts for this page-->
-    <script src="js/sb-admin-datatables.min.js"></script>
-    <script src="js/sb-admin-charts.min.js"></script>
+    <script src="{{asset('js/sb-admin-datatables.min.js')}}"></script>
 
-</body>
-
+  </body>
 </html>

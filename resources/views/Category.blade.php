@@ -9,17 +9,19 @@
         <li class="breadcrumb-item">
           <a href="/home">Home</a>
         </li>
-        <li class="breadcrumb-item active">Categories</li>
+        <li class="breadcrumb-item active">
+          <a href="/Categories">Categories</a>
+        </li>
+        <li class="breadcrumb-item active">{{$category->name}}</li>
       </ol>
-      @include('includes.error')
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Categories
+          <i class="fa fa-table"></i> Sub-Ctegories for {{$category->name}}
           <!-- Add Category button -->
             <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
               <i class="fa fa-plus"></i>
-              Add Category
+              Add Sub-Category
             </button>
             <!-- The Modal -->
             <div class="modal fade" id="myModal">
@@ -27,7 +29,7 @@
                 <div class="modal-content">
                   <!-- Modal Header -->
                   <div class="modal-header">
-                    <h4 class="modal-title">Add Category</h4>
+                    <h4 class="modal-title">Add Sub-Category</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
 
@@ -35,6 +37,7 @@
                   <form class="addForm" action="/Categories" method="post">
                     @csrf
                     <div class="modal-body">
+                      @include('includes.error')
                       <div class="form-group">
                         <label>Name:</label>
                         <input type="text" class="form-control" id="cateName" placeholder="Category Name" name="name">
@@ -65,6 +68,7 @@
                 <tr>
                   <th>Name</th>
                   <th>Caption</th>
+                  <th>No. of Products</th>
                   <th>Created at</th>
                   <th>Last Update</th>
                   <th>Action</th>
@@ -74,32 +78,14 @@
                 <tr>
                   <th>Name</th>
                   <th>Caption</th>
+                  <th>No. of Products</th>
                   <th>Created at</th>
                   <th>Last Update</th>
                   <th>Action</th>
                 </tr>
               </tfoot>
               <tbody id="tbody">
-                @foreach($categories as $index => $category)
-                  <tr id="url{{$category->id}}">
-                    <td>{{$category->name}}</td>
-                    <td>{{$category->caption}}</td>
-                    <td>{{$category->created_at}}</td>
-                    <td>{{$category->updated_at}}</td>
-                    <td>
-                      <a href="{{url('/Category', ['cat_id' => $category->id])}}">
-                        <button class="btn btn-success"><i class="fa fa-edit fa-lg"></i></button>
-                      </a>
-                      <form style="display: inline-block;" action="{{url('/Category', ['cat_id' => $category->id])}}" method="post">
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <button type="submit" value="{{$category->id}}" class="btn btn-danger deleCate">
-                          <i class="fa fa-trash fa-lg"></i>
-                        </button>
-                      </form>
-                    </td>
-                  </tr>
-                @endforeach
+
               </tbody>
             </table>
           </div>
@@ -127,7 +113,7 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>

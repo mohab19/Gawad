@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
-Route::get('/Categories', 'HomeController@Categories')->name('Categories');
+Route::get('/Categories', 'CategoryController@show')->name('Categories');
 Route::post('/Categories', 'CategoryController@store');
-Route::get('/subCtegory/{cat_id}', 'subCategoryController@create');
+Route::get('/Category/{cat_id}', 'CategoryController@create');
+Route::delete('/Category/{cat_id}', 'CategoryController@destroy');

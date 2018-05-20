@@ -53,6 +53,7 @@ class ProductController extends Controller
           }
           Product::create([
               'subCat_id' => $request->subCat_id,
+              'family_id'=> $request->family_id,
               'path' => $path,
               'name' => $fileName,
               'caption' => $request->caption

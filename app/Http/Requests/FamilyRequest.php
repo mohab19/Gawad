@@ -13,7 +13,7 @@ class FamilyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class FamilyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'name' => 'required|max:50|min:3',
+          'caption' => 'required|max:250|min:10'
         ];
     }
 }

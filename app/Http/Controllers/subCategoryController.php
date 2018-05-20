@@ -8,6 +8,7 @@ use App\subCategory;
 use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Product;
+use App\Family;
 
 class subCategoryController extends Controller
 {
@@ -31,7 +32,8 @@ class subCategoryController extends Controller
       $subCategory = subCategory::where('id', $subCat_id)->first();
       $category = Category::where('id', $subCategory->cat_id)->first();
       $products = Product::where('subCat_id', $subCat_id)->get();
-      return view('subCategory', ['category' => $category, 'subCategory' => $subCategory, 'products' => $products]);
+      $families = Family::all();
+      return view('subCategory', ['category' => $category, 'subCategory' => $subCategory, 'products' => $products, 'families' => $families]);
     }
 
     /**

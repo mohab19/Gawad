@@ -54,6 +54,14 @@
                         <input type="text" class="form-control" id="productCap" placeholder="Product Caption" name="caption">
                       </div>
                       <div class="form-group">
+                        <select class="form-control" name="family_id">
+                          <option selected disabled>Choose Family: </option>
+                          @foreach($families as $family)
+                          <option value="{{$family->id}}">{{$family->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                      <div class="form-group">
                         <label>Choose Image</label>
                         <input type="file" name="path">
                         <p class="help-block">Try to check image size before Uploading</p>

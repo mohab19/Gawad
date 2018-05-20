@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FamilyRequest;
+use App\Family;
 
 class FamilyController extends Controller
 {
@@ -13,7 +15,8 @@ class FamilyController extends Controller
      */
     public function index()
     {
-        //
+        $families = Family::all();
+        return view('families', ['families' => $families]);
     }
 
     /**
@@ -32,9 +35,18 @@ class FamilyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FamilyRequest $request)
     {
-        //
+      try {
+        Family::create($request->all());
+        $message = 'Category Added Successfuly!';
+      } catch (\Exception $e) {
+        $message = 'Something went Wrong, Please try again later!';
+      }
+      if($request->ajax()){
+         return response()->json($lastRec, 200);
+      }
+      return back()->with(['message' => $message]);
     }
 
     /**

@@ -28,3 +28,5 @@ Route::delete('/subCategory/{subCat_id}', 'subCategoryController@destroy');
 Route::get('/subCategory/{subCat_id}', 'subCategoryController@create');
 Route::post('/product', 'productController@store');
 Route::delete('/product/{Pid}', 'ProductController@destroy');
+Route::get('/Families', 'FamilyController@index');
+Route::post('/Family', 'FamilyController@store');

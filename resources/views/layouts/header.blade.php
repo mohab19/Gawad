@@ -67,6 +67,12 @@
               <span class="nav-link-text">Categories</span>
             </a>
           </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+              <a class="nav-link" href="/Families">
+                <i class="fa fa-fw fa-dashboard"></i>
+                <span class="nav-link-text">Families</span>
+              </a>
+            </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

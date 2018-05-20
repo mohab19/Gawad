@@ -476,9 +476,25 @@ footer.sticky-footer {
     width: calc(100% - 55px);
   }
 }
+/* my work on css */
 .cs-alert {
   display: none;
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 5px !important;
+}
+.tbody {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 6;
+}
+.Pimg {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+}
+.detbody {
+  line-height: 1;
+  text-align: left;
 }

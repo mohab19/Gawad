@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
 use Illuminate\Support\Facades\Storage;
+use App\subCategory;
 
 class CategoryController extends Controller
 {
@@ -20,7 +21,8 @@ class CategoryController extends Controller
 
     public function create($cat_id) {
       $category = Category::where('id', $cat_id)->first();
-      return view('Category', ['category' => $category]);
+      $subCategories = subCategory::where('cat_id', $cat_id)->get();
+      return view('Category', ['category' => $category, 'subCategories' => $subCategories]);
     }
 
     public function store(CategoryRequest $request) {

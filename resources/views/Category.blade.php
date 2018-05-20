@@ -14,6 +14,7 @@
         </li>
         <li class="breadcrumb-item active">{{$category->name}}</li>
       </ol>
+      @include('includes.error')
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
@@ -34,25 +35,25 @@
                   </div>
 
                   <!-- Modal body -->
-                  <form class="addForm" action="/Categories" method="post">
+                  <form class="addForm" action="/subCategory" method="post">
                     @csrf
                     <div class="modal-body">
-                      @include('includes.error')
                       <div class="form-group">
+                        <input type="hidden" name="cat_id" value="{{$category->id}}">
                         <label>Name:</label>
-                        <input type="text" class="form-control" id="cateName" placeholder="Category Name" name="name">
+                        <input type="text" class="form-control" id="subCateName" placeholder="sub-Category Name" name="name">
                         <div class="alert alert-danger cs-alert">
                           Name must be larger than <strong>3</strong> chars!
                         </div>
                       </div>
                       <div class="form-group">
                         <label>Caption:</label>
-                        <input type="text" class="form-control" id="cateCap" placeholder="Category Caption" name="caption">
+                        <input type="text" class="form-control" id="subCateCap" placeholder="sub-Category Caption" name="caption">
                       </div>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" id="add-category">Submit</button>
+                      <button type="submit" class="btn btn-primary" id="add-subCategory">Submit</button>
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                   </form>
@@ -85,7 +86,27 @@
                 </tr>
               </tfoot>
               <tbody id="tbody">
-
+                @foreach($subCategories as $subCategory)
+                  <tr id="url{{$subCategory->id}}">
+                    <td>{{$subCategory->name}}</td>
+                    <td>{{$subCategory->caption}}</td>
+                    <td>0</td>
+                    <td>{{$subCategory->created_at}}</td>
+                    <td>{{$subCategory->updated_at}}</td>
+                    <td>
+                      <a href="{{url('/subCategory', ['id' => $subCategory->id])}}">
+                        <button class="btn btn-success"><i class="fa fa-edit fa-lg"></i></button>
+                      </a>
+                      <form style="display: inline-block;" action="{{url('/subCategory', ['id' => $subCategory->id])}}" method="post">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <button type="submit" value="{{$subCategory->id}}" class="btn btn-danger delSub">
+                          <i class="fa fa-trash fa-lg"></i>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\subCategoryRequest;
-use App\subCategory;
+use App\Http\Requests\ProdutRequest;
 use Illuminate\Support\Facades\Storage;
-use App\Category;
 use App\Product;
+use App\subCategory;
+use Intervention\Image\ImageManagerStatic as Image;
 
-class subCategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,12 +26,9 @@ class subCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($subCat_id)
+    public function create()
     {
-      $subCategory = subCategory::where('id', $subCat_id)->first();
-      $category = Category::where('id', $subCategory->cat_id)->first();
-      $products = Product::where('subCat_id', $subCat_id)->get();
-      return view('subCategory', ['category' => $category, 'subCategory' => $subCategory, 'products' => $products]);
+        //
     }
 
     /**
@@ -40,20 +37,31 @@ class subCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProdutRequest $request)
     {
       try {
-        subCategory::create($request->all());
-        $lastRec = subCategory::latest()->first();
-        $dir = '\public\Category' . '\\' . $lastRec->cat_id . '\\' . $lastRec->id;
-        $file = Storage::makeDirectory($dir, 0775, true);
-        $message = 'Category Added Successfuly!';
+        if ($request->hasFile('path')) {
+              $subCategory = subCategory::where('id', $request->subCat_id)->first();
+              $image = $request->file('path');
+              $fileName = $request->name;
+              $fullName = $fileName . ".jpg";
+              $image_resize = Image::make($image->getRealPath());
+              $image_resize->resize(300, 300);
+              $image_resize->save(storage_path() . '/app/public/Category/' . $subCategory->cat_id . '/' . $request->subCat_id . '/' . $fullName);
+              $path = 'storage/Category/' . $subCategory->cat_id . '/' . $request->subCat_id . '/' . $fullName;
+              $message = 'Image Added Successfuly!';
+          }
+          Product::create([
+              'subCat_id' => $request->subCat_id,
+              'path' => $path,
+              'name' => $fileName,
+              'caption' => $request->caption
+          ]);
       } catch (\Exception $e) {
+        dd($e);
         $message = 'Something went Wrong, Please try again later!';
       }
-      if($request->ajax()){
-         return response()->json($lastRec, 200);
-      }
+
       return back()->with(['message' => $message]);
     }
 
@@ -97,12 +105,13 @@ class subCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $subCat_id) {
+    public function destroy(Request $request, $Pid) {
       try {
-        $subCategory = subCategory::where('id', $subCat_id)->first();
-        $dir = '\public\Category\\' . $subCategory->cat_id . '\\' . $subCategory->id;
-        $file = Storage::deleteDirectory($dir);
-        $subCategory->delete();
+        $product = Product::where('id', $Pid)->first();
+        $subCategory = subCategory::where('id', $product->subCat_id)->first();
+        $dir = '\public\Category\\' . $subCategory->cat_id . '\\' . $subCategory->id . '\\' . $product->name;
+        $file = Storage::delete($dir);
+        $product->delete();
         $message = 'Successfully Deleted!';
       } catch (\Exception $e) {
         dd($e);
@@ -114,4 +123,4 @@ class subCategoryController extends Controller
 
       return back()->with(['message' => $message]);
     }
-  }
+}

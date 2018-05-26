@@ -25,7 +25,7 @@ class ProdutRequest extends FormRequest
     {
         return [
             'subCat_id' => 'required',
-            'subCat_id' => 'required',
+            'family_id' => 'required',
             'path' => 'required',
             'name' => 'required|min:3|max:50',
             'caption' => 'required|min:10|max:250',

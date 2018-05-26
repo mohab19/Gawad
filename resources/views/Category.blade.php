@@ -39,16 +39,16 @@
                     @csrf
                     <div class="modal-body">
                       <div class="form-group">
-                        <input type="hidden" name="cat_id" value="{{$category->id}}">
+                        <input type="hidden" name="cat_id" id="cat_id" value="{{$category->id}}">
                         <label>Name:</label>
-                        <input type="text" class="form-control" id="subCateName" placeholder="sub-Category Name" name="name">
+                        <input type="text" class="form-control" id="subName" placeholder="sub-Category Name" name="name">
                         <div class="alert alert-danger cs-alert">
                           Name must be larger than <strong>3</strong> chars!
                         </div>
                       </div>
                       <div class="form-group">
                         <label>Caption:</label>
-                        <input type="text" class="form-control" id="subCateCap" placeholder="sub-Category Caption" name="caption">
+                        <input type="text" class="form-control" id="subCap" placeholder="sub-Category Caption" name="caption">
                       </div>
                     </div>
                     <!-- Modal footer -->
@@ -60,7 +60,48 @@
                 </div>
               </div>
             </div><!--end model-->
-          <!-- Add Category button -->
+            <!-- Add Category button -->
+            <!-- Edit Button -->
+            <button type="button" class="btn btn-success pull-right catEditButt" data-toggle="modal" data-target="#EdModal">
+              <i class="fa fa-edit fa-lg"></i>
+              Edit Category
+            </button>
+            <!-- The Modal -->
+            <div class="modal fade" id="EdModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Edit Category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <form class="addForm" action="{{url('/UpdateCategory', ['id' => $category->id])}}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" id="CatName" value="{{$category->name}}" name="name">
+                        <div class="alert alert-danger cs-alert">
+                          Name must be larger than <strong>3</strong> chars!
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Caption:</label>
+                        <input type="text" class="form-control" id="CatCap" value="{{$category->caption}}" name="caption">
+                      </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" id="EdCategory">Submit</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div><!--end model-->
+            <!-- Edit Button -->
           </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -85,12 +126,12 @@
                   <th>Action</th>
                 </tr>
               </tfoot>
-              <tbody id="tbody">
+              <tbody id="subBody">
                 @foreach($subCategories as $subCategory)
                   <tr id="url{{$subCategory->id}}">
                     <td>{{$subCategory->name}}</td>
                     <td>{{$subCategory->caption}}</td>
-                    <td>0</td>
+                    <td>{{count($subCategory->Product)}}</td>
                     <td>{{$subCategory->created_at}}</td>
                     <td>{{$subCategory->updated_at}}</td>
                     <td>

@@ -38,13 +38,13 @@
                   </div>
 
                   <!-- Modal body -->
-                  <form class="addForm" action="/product" method="post" enctype="multipart/form-data">
+                  <form class="addForm" ref="formData" action="/product" method="post" enctype="multipart/form-data" id="#Pform">
                     @csrf
                     <div class="modal-body">
                       <div class="form-group">
-                        <input type="hidden" name="subCat_id" value="{{$subCategory->id}}">
+                        <input type="hidden" name="subCat_id" id="subCat_id" value="{{$subCategory->id}}">
                         <label>Name:</label>
-                        <input type="text" class="form-control" id="produtName" placeholder="Produt Name" name="name">
+                        <input type="text" class="form-control" id="productName" placeholder="Produt Name" name="name">
                         <div class="alert alert-danger cs-alert">
                           Name must be larger than <strong>3</strong> chars!
                         </div>
@@ -54,7 +54,7 @@
                         <input type="text" class="form-control" id="productCap" placeholder="Product Caption" name="caption">
                       </div>
                       <div class="form-group">
-                        <select class="form-control" name="family_id">
+                        <select class="form-control" name="family_id" id="family_id">
                           <option selected disabled>Choose Family: </option>
                           @foreach($families as $family)
                           <option value="{{$family->id}}">{{$family->name}}</option>
@@ -63,7 +63,7 @@
                       </div>
                       <div class="form-group">
                         <label>Choose Image</label>
-                        <input type="file" name="path">
+                        <input type="file" name="path" id="path">
                         <p class="help-block">Try to check image size before Uploading</p>
                       </div>
                     </div>
@@ -77,6 +77,47 @@
               </div>
             </div><!--end model-->
           <!-- Add Category button -->
+          <!-- Edit Button -->
+          <button type="button" class="btn btn-success pull-right catEditButt" data-toggle="modal" data-target="#EdModal">
+            <i class="fa fa-edit fa-lg"></i>
+            Edit Sub-Category
+          </button>
+          <!-- The Modal -->
+          <div class="modal fade" id="EdModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Edit Sub-Category</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <form class="addForm" action="{{url('/UpdateSub', ['id' => $subCategory->id])}}" method="post">
+                  @csrf
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label>Name:</label>
+                      <input type="text" class="form-control" id="SubName" value="{{$subCategory->name}}" name="name">
+                      <div class="alert alert-danger cs-alert">
+                        Name must be larger than <strong>3</strong> chars!
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Caption:</label>
+                      <input type="text" class="form-control" id="SubCap" value="{{$subCategory->caption}}" name="caption">
+                    </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="EditSub">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div><!--end model-->
+          <!-- Edit Button -->
           </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -99,7 +140,7 @@
                   <th>Action</th>
                 </tr>
               </tfoot>
-              <tbody id="tbody" class="tbody">
+              <tbody id="Pbody" class="tbody">
                 @foreach($products as $index => $product)
 
                 <tr>

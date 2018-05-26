@@ -19,7 +19,8 @@ class subCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subCategories = subCategory::all();
+        return view('SubCategories', ['subCategories' => $subCategories]);
     }
 
     /**
@@ -51,6 +52,7 @@ class subCategoryController extends Controller
         $file = Storage::makeDirectory($dir, 0775, true);
         $message = 'Category Added Successfuly!';
       } catch (\Exception $e) {
+        dd($e);
         $message = 'Something went Wrong, Please try again later!';
       }
       if($request->ajax()){
@@ -90,7 +92,14 @@ class subCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      try {
+        subCategory::where('id', $id)->update(['name' => $request->name, 'caption' => $request->caption]);
+        $message = 'Successfully Updated!';
+      } catch (\Exception $e) {
+        $message = 'something went wrong, Please try again later!';
+      }
+
+      return back()->with(['message' => $message]);
     }
 
     /**

@@ -39,7 +39,7 @@ class ProductController extends Controller
      */
     public function store(ProdutRequest $request)
     {
-      try {
+      try {    
         if ($request->hasFile('path')) {
               $subCategory = subCategory::where('id', $request->subCat_id)->first();
               $image = $request->file('path');
@@ -110,7 +110,7 @@ class ProductController extends Controller
       try {
         $product = Product::where('id', $Pid)->first();
         $subCategory = subCategory::where('id', $product->subCat_id)->first();
-        $dir = '\public\Category\\' . $subCategory->cat_id . '\\' . $subCategory->id . '\\' . $product->name;
+        $dir = '\public\Category\\' . $subCategory->cat_id . '\\' . $subCategory->id . '\\' . $product->name . '.jpg';
         $file = Storage::delete($dir);
         $product->delete();
         $message = 'Successfully Deleted!';

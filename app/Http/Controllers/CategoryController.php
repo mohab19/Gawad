@@ -42,6 +42,17 @@ class CategoryController extends Controller
       return view('/Categories');
     }
 
+    public function update(Request  $request, $id) {
+      try {
+        Category::where('id', $id)->update(['name' => $request->name, 'caption' => $request->caption]);
+        $message = 'Successfully Updated!';
+      } catch (\Exception $e) {
+        $message = 'something went wrong, Please try again later!';
+      }
+
+      return back()->with(['message' => $message]);
+    }
+
     public function destroy(Request $request, $cat_id) {
       try {
         $category = Category::where('id', $cat_id)->first();

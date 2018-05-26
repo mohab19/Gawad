@@ -9,17 +9,18 @@
         <li class="breadcrumb-item">
           <a href="/home">Home</a>
         </li>
-        <li class="breadcrumb-item active">Families</li>
+        <li class="breadcrumb-item">Families</li>
+        <li class="breadcrumb-item active">{{$family->name}}</li>
       </ol>
       @include('includes.error')
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Families
+          <i class="fa fa-table"></i> {{$family->name}}
           <!-- Add Category button -->
-            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">
               <i class="fa fa-plus"></i>
-              Add Family
+              Edit Family
             </button>
             <!-- The Modal -->
             <div class="modal fade" id="myModal">
@@ -27,24 +28,24 @@
                 <div class="modal-content">
                   <!-- Modal Header -->
                   <div class="modal-header">
-                    <h4 class="modal-title">Add Family</h4>
+                    <h4 class="modal-title">Edit Family</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
 
                   <!-- Modal body -->
-                  <form class="addForm" action="/Family" method="post">
+                  <form class="addForm" action="{{url('/Family', ['id' => $family->id])}}" method="post">
                     @csrf
                     <div class="modal-body">
                       <div class="form-group">
                         <label>Name:</label>
-                        <input type="text" class="form-control" id="famName" placeholder="Family Name" name="name">
+                        <input type="text" class="form-control" id="famName" value="{{$family->name}}" name="name">
                         <div class="alert alert-danger cs-alert">
                           Name must be larger than <strong>3</strong> chars!
                         </div>
                       </div>
                       <div class="form-group">
                         <label>Caption:</label>
-                        <input type="text" class="form-control" id="famCap" placeholder="Family Caption" name="caption">
+                        <input type="text" class="form-control" id="famCap" value="{{$family->caption}}" name="caption">
                       </div>
                     </div>
                     <!-- Modal footer -->
@@ -63,40 +64,36 @@
             <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
+                  <th>#No.</th>
+                  <th>Sub-Category Name</th>
                   <th>Name</th>
                   <th>Caption</th>
-                  <th>Created at</th>
                   <th>Last Update</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
+                  <th>#No.</th>
+                  <th>Sub-Category Name</th>
                   <th>Name</th>
                   <th>Caption</th>
-                  <th>Created at</th>
                   <th>Last Update</th>
                   <th>Action</th>
                 </tr>
               </tfoot>
               <tbody id="Fbody">
-                @foreach($families as $index => $family)
-                  <tr id="url{{$family->id}}">
-                    <td>{{$family->name}}</td>
-                    <td>{{$family->caption}}</td>
-                    <td>{{$family->created_at}}</td>
-                    <td>{{$family->updated_at}}</td>
+                @foreach($products as $index => $product)
+                  <tr id="url{{$product->id}}">
+                    <td>{{$index+1}}</td>
+                    <td></td>
+                    <td>{{$product->name}}</td>
+                    <td>{{$product->caption}}</td>
+                    <td>{{$product->updated_at}}</td>
                     <td>
-                      <a href="{{url('/Family', ['cat_id' => $family->id])}}">
-                        <button class="btn btn-success"><i class="fa fa-edit fa-lg"></i></button>
+                      <a href="{{url('/subCategory', ['id' => $product->subCat_id])}}">
+                        <button class="btn btn-warning"><i class="fa fa-clipboard fa-lg" style="color: #FFF;"></i></button>
                       </a>
-                      <form style="display: inline-block;" action="{{url('/Family', ['cat_id' => $family->id])}}" method="post">
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <button type="submit" value="{{$family->id}}" class="btn btn-danger delFam">
-                          <i class="fa fa-trash fa-lg"></i>
-                        </button>
-                      </form>
                     </td>
                   </tr>
                 @endforeach

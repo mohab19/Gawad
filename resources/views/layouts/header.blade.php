@@ -130,6 +130,8 @@
     <script src="{{asset('js/sb-admin.min.js')}}"></script>
     <!-- Custom scripts for this page-->
     <script src="{{asset('js/sb-admin-datatables.min.js')}}"></script>
+    <!-- Mustache plugin for Jscript -->
+    <script src="{{asset('js/mustache.min.js')}}"></script>
 
   </body>
 </html>

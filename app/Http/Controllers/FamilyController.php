@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\FamilyRequest;
 use App\Family;
+use App\Product;
 
 class FamilyController extends Controller
 {
@@ -24,9 +25,11 @@ class FamilyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+      $family = Family::where('id', $id)->first();
+      $products = Product::where('family_id', $id)->get();
+      return view('family', ['family' => $family, 'products' => $products]);
     }
 
     /**
@@ -80,7 +83,14 @@ class FamilyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      try {
+        Family::where('id', $id)->update(['name' => $request->name, 'caption' => $request->caption]);
+        $message = 'Successfully Updated!';
+      } catch (\Exception $e) {
+        $message = 'something went wrong, Please try again later!';
+      }
+
+      return back()->with(['message' => $message]);
     }
 
     /**

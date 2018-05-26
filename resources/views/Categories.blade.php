@@ -80,26 +80,7 @@
                 </tr>
               </tfoot>
               <tbody id="tbody">
-                @foreach($categories as $index => $category)
-                  <tr id="url{{$category->id}}">
-                    <td>{{$category->name}}</td>
-                    <td>{{$category->caption}}</td>
-                    <td>{{$category->created_at}}</td>
-                    <td>{{$category->updated_at}}</td>
-                    <td>
-                      <a href="{{url('/Category', ['cat_id' => $category->id])}}">
-                        <button class="btn btn-success"><i class="fa fa-edit fa-lg"></i></button>
-                      </a>
-                      <form style="display: inline-block;" action="{{url('/Category', ['cat_id' => $category->id])}}" method="post">
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <button type="submit" value="{{$category->id}}" class="btn btn-danger deleCate">
-                          <i class="fa fa-trash fa-lg"></i>
-                        </button>
-                      </form>
-                    </td>
-                  </tr>
-                @endforeach
+
               </tbody>
             </table>
           </div>

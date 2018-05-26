@@ -17,11 +17,11 @@ class Product extends Model
       'subCat_id', 'family_id','path', 'name', 'caption', 'flag'
   ];
 
-  public function Category() {
-    return $this->belongsTo(subCategory::class, 'subCat_id');
+  public function subCategory() {
+    return $this->belongsTo(subCategory::class);
   }
 
   public function Family() {
-    return $this->belongsTo(Family::class, 'family_id');
+    return $this->belongsTo(Family::class);
   }
 }

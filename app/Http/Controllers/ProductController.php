@@ -39,7 +39,7 @@ class ProductController extends Controller
      */
     public function store(ProdutRequest $request)
     {
-      try {    
+      try {
         if ($request->hasFile('path')) {
               $subCategory = subCategory::where('id', $request->subCat_id)->first();
               $image = $request->file('path');
@@ -56,7 +56,8 @@ class ProductController extends Controller
               'family_id'=> $request->family_id,
               'path' => $path,
               'name' => $fileName,
-              'caption' => $request->caption
+              'caption' => $request->caption,
+              'price' => $request->price
           ]);
       } catch (\Exception $e) {
         dd($e);

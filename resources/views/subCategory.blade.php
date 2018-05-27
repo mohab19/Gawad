@@ -50,6 +50,10 @@
                         </div>
                       </div>
                       <div class="form-group">
+                        <label>Price:</label>
+                        <input type="text" class="form-control" id="produtPrice" placeholder="$ Price" name="price">
+                      </div>
+                      <div class="form-group">
                         <label>Caption:</label>
                         <input type="text" class="form-control" id="productCap" placeholder="Product Caption" name="caption">
                       </div>
@@ -128,6 +132,7 @@
                   <th>Image</th>
                   <th>Name</th>
                   <th>Caption</th>
+                  <th>Price</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -137,6 +142,7 @@
                   <th>Image</th>
                   <th>Name</th>
                   <th>Caption</th>
+                  <th>Price</th>
                   <th>Action</th>
                 </tr>
               </tfoot>
@@ -148,6 +154,7 @@
                   <td><img src="{{url($product->path)}}" alt="{{$product->name}}" class="img-thumbnail Pimg"></td>
                   <td>{{$product->name}}</td>
                   <td>{{$product->caption}}</td>
+                  <td>{{$product->price}}</td>
                   <td>
                     <button class="btn btn-success" data-toggle="modal" data-target="#myModal{{$index+1}}"><i class="fa fa-edit fa-lg"></i></button>
                     <!-- The Modal -->
@@ -170,6 +177,10 @@
                                 <div class="alert alert-danger cs-alert">
                                   Name must be larger than <strong>3</strong> chars!
                                 </div>
+                              </div>
+                              <div class="form-group">
+                                <label>Price:</label>
+                                <input type="text" class="form-control" id="produtPrice" value="{{$product->price}}" name="price">
                               </div>
                               <div class="form-group">
                                 <label>Caption:</label>

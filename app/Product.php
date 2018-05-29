@@ -14,7 +14,7 @@ class Product extends Model
    * @var array
    */
   protected $fillable = [
-      'subCat_id', 'family_id','path', 'name', 'caption', 'flag'
+      'subCat_id', 'family_id','path', 'name', 'caption', 'price', 'flag'
   ];
 
   public function subCategory() {

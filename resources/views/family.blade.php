@@ -66,6 +66,7 @@
                 <tr>
                   <th>#No.</th>
                   <th>Sub-Category Name</th>
+                  <th>Picture</th>
                   <th>Name</th>
                   <th>Caption</th>
                   <th>Last Update</th>
@@ -76,6 +77,7 @@
                 <tr>
                   <th>#No.</th>
                   <th>Sub-Category Name</th>
+                  <th>Picture</th>
                   <th>Name</th>
                   <th>Caption</th>
                   <th>Last Update</th>
@@ -87,6 +89,7 @@
                   <tr id="url{{$product->id}}">
                     <td>{{$index+1}}</td>
                     <td></td>
+                    <td><img src="{{url($product->path)}}" alt="{{$product->name}}" class="img-thumbnail Pimg"></td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->caption}}</td>
                     <td>{{$product->updated_at}}</td>

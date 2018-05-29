@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/about', 'HomeController@about')->name('about');
+//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/Categories', 'CategoryController@show')->name('Categories');
 Route::get('/Products', 'productController@index');
 Route::get('/SubCategories', 'subCategoryController@index');
@@ -36,3 +36,13 @@ Route::get('/Families', 'FamilyController@index');
 Route::post('/Family', 'FamilyController@store');
 Route::get('/Family/{id}', 'FamilyController@create');
 Route::post('/Family/{id}', 'FamilyController@update');
+
+
+
+Route::get('/', 'PagesController@home');
+Route::get('/gabout', 'PagesController@about');
+Route::get('/about', 'HomeController@about')->name('about');
+Route::resource('/home' , 'SlideController');
+Route::post('/home/{flag}' , 'SlideController@storeOne')->name('home.storeOne');
+Route::resource('/about' , 'AboutPanelController');
+Route::post('/about/{flag}' , 'AboutPanelController@storeOne')->name('about.storeOne');

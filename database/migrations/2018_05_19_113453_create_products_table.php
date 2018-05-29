@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('path');
             $table->string('name')->unique();
             $table->string('caption');
+            $table->double('price');
             $table->integer('flag')->default(0);
             $table->timestamps();
         });
